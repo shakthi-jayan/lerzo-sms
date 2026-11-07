@@ -15,6 +15,7 @@ class Student(models.Model):
     is_active = models.BooleanField(default=True)
     course = models.ForeignKey("courses.Course",on_delete=models.PROTECT,related_name="students",null=True,blank=True)
     staff = models.ForeignKey("staffs.Staff",on_delete=models.PROTECT,related_name="students",null=True,blank=True)
+    batch = models.ForeignKey("batches.Batch",on_delete=models.PROTECT,related_name="students",null=True,blank=True)
     profile_image = models.ImageField(upload_to='students/',null=True,blank=True)
 
     def __str__(self):
