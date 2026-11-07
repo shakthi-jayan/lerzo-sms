@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from courses.models import Course
 
 class Student(models.Model):
     enrollment_number = models.CharField(max_length=15,unique=True)
@@ -12,6 +13,8 @@ class Student(models.Model):
     joining_date = models.DateField(default=timezone.localdate)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    course = models.ForeignKey("courses.Course",on_delete=models.PROTECT,related_name="students",null=True,blank=True)
     profile_image = models.ImageField(upload_to='students/',null=True,blank=True)
 
     def __str__(self):
