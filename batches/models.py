@@ -4,8 +4,8 @@ class Batch(models.Model):
     name = models.CharField(max_length=100)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    assigned_to = models.ForeignKey("staffs.Staff",on_delete=models.PROTECT,related_name="batches"
-    )
+    assigned_to = models.ForeignKey("staffs.Staff",on_delete=models.PROTECT,related_name="batches")
+    course = models.ForeignKey("courses.Course",on_delete=models.PROTECT,related_name="batches",null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
